@@ -52,6 +52,7 @@ export interface User {
     price: number;
     brand?: string;
     category?: string;
+    stock?: number
   }
   
   export interface UpdateProductRequest extends CreateProductRequest {

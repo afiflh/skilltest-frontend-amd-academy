@@ -41,10 +41,10 @@ http://localhost:5173
 
 ## Teknologi
 
-React 18
-TypeScript
-Vite
-Tailwind CSS
-shadcn/ui
-React Router
-Lucide Icons
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- React Router
+- Lucide Icons

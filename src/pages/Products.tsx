@@ -415,7 +415,7 @@ const Products: React.FC = () => {
               />
 
               {/* STOK */}
-              <Label>Stok *</Label>
+              <Label>Stok</Label>
               <Input
                 type="number"
                 value={formData.stock ?? ""}
@@ -425,7 +425,7 @@ const Products: React.FC = () => {
               />
 
               {/* BRAND */}
-              <Label>Brand *</Label>
+              <Label>Brand</Label>
               <Input
                 value={formData.brand ?? ""}
                 onChange={(e) =>
@@ -434,7 +434,7 @@ const Products: React.FC = () => {
               />
 
               {/* KATEGORI */}
-              <Label>Kategori *</Label>
+              <Label>Kategori</Label>
               <Input
                 value={formData.category ?? ""}
                 onChange={(e) =>

@@ -1,4 +1,5 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect } from "react";
+import type { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../services/api";
 import { setToken, setUser, isAuthenticated } from "../utils/auth";
@@ -34,20 +35,17 @@ const Login: React.FC = () => {
   // Cek token dari localStorage saat component mount
   useEffect(() => {
     console.log("🔍 Checking authentication status...");
-
+    
     const isAuth = isAuthenticated();
     console.log("✅ Is Authenticated:", isAuth);
-
+    
     if (isAuth) {
-      const token = localStorage.getItem("auth_token");
-      const userData = localStorage.getItem("user_data");
-
-      console.log(
-        "🎫 Token found:",
-        token ? token.substring(0, 50) + "..." : "null"
-      );
+      const token = localStorage.getItem('auth_token');
+      const userData = localStorage.getItem('user_data');
+      
+      console.log("🎫 Token found:", token ? token.substring(0, 50) + "..." : "null");
       console.log("👤 User data:", userData ? JSON.parse(userData) : "null");
-
+      
       // Jika sudah ada token, redirect ke dashboard
       navigate("/dashboard", { replace: true });
     } else {
@@ -94,11 +92,11 @@ const Login: React.FC = () => {
 
     try {
       console.log("🌐 Sending POST request to DummyJSON API...");
-
+      
       // ✅ REQUIREMENT: POST ke https://dummyjson.com/auth/login
       // Kirim username dan password
       const response = await login({ username, password });
-
+      
       console.log("✅ API Response received:");
       console.log("📦 Full Response:", response);
       console.log("🎫 Token:", response.token);
@@ -107,41 +105,36 @@ const Login: React.FC = () => {
         username: response.username,
         firstName: response.firstName,
         lastName: response.lastName,
-        email: response.email,
+        email: response.email
       });
 
       // ✅ REQUIREMENT: Simpan token ke localStorage
       console.log("💾 Saving token to localStorage...");
       setToken(response.token);
-
+      
       console.log("💾 Saving user data to localStorage...");
       setUser(response);
-
+      
       // Verify data tersimpan
-      const savedToken = localStorage.getItem("auth_token");
-      const savedUser = localStorage.getItem("user_data");
-
-      console.log(
-        "✅ Token saved:",
-        savedToken ? savedToken.substring(0, 50) + "..." : "FAILED"
-      );
-      console.log(
-        "✅ User data saved:",
-        savedUser ? JSON.parse(savedUser) : "FAILED"
-      );
-
+      const savedToken = localStorage.getItem('auth_token');
+      const savedUser = localStorage.getItem('user_data');
+      
+      console.log("✅ Token saved:", savedToken ? savedToken.substring(0, 50) + "..." : "FAILED");
+      console.log("✅ User data saved:", savedUser ? JSON.parse(savedUser) : "FAILED");
+      
       console.log("📊 localStorage contents:");
       console.log({
-        auth_token: localStorage.getItem("auth_token"),
-        user_data: localStorage.getItem("user_data"),
+        auth_token: localStorage.getItem('auth_token'),
+        user_data: localStorage.getItem('user_data')
       });
 
       // ✅ REQUIREMENT: Redirect ke Dashboard setelah login sukses
       console.log("🚀 Redirecting to dashboard...");
       navigate("/dashboard", { replace: true });
+      
     } catch (err) {
       console.error("❌ Login error:", err);
-
+      
       // Handle error dengan message yang jelas
       if (err instanceof Error) {
         console.error("Error message:", err.message);
@@ -250,6 +243,7 @@ const Login: React.FC = () => {
               )}
             </Button>
           </form>
+
         </CardContent>
       </Card>
     </div>

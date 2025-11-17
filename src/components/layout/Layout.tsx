@@ -1,8 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { removeToken, getUser } from '../../utils/auth';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Package, LayoutDashboard, LogOut } from 'lucide-react';
+import { Link, useNavigate } from "react-router-dom";
+import { removeToken, getUser } from "../../utils/auth";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Package, LayoutDashboard, LogOut } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,20 +14,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const handleLogout = () => {
     // Konfirmasi sebelum logout
-    const confirmLogout = window.confirm('Apakah Anda yakin ingin logout?');
-    
+    const confirmLogout = window.confirm("Apakah Anda yakin ingin logout?");
+
     if (confirmLogout) {
       // Hapus token dan data user dari localStorage
       removeToken();
-      
+
       // Redirect ke login page
-      navigate('/login', { replace: true });
+      navigate("/login", { replace: true });
     }
   };
 
   // Get initials from user name
   const getInitials = (firstName?: string, lastName?: string) => {
-    return `${firstName?.[0] || ''}${lastName?.[0] || ''}`.toUpperCase();
+    return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
   };
 
   return (
@@ -38,13 +38,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex justify-between h-16">
             {/* Logo & Navigation */}
             <div className="flex items-center space-x-8">
-              <Link to="/dashboard" className="flex items-center space-x-2 group">
+              <Link
+                to="/dashboard"
+                className="flex items-center space-x-2 group"
+              >
                 <Package className="h-8 w-8 text-blue-600 group-hover:text-blue-700 transition" />
                 <span className="text-xl font-bold text-gray-900">
                   Product Manager
                 </span>
               </Link>
-              
+
               <div className="hidden md:flex space-x-1">
                 <Link to="/dashboard">
                   <Button variant="ghost" className="gap-2">
@@ -79,8 +82,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </div>
                 </div>
               )}
-              <Button 
-                variant="destructive" 
+              <Button
+                variant="destructive"
                 size="sm"
                 onClick={handleLogout}
                 className="gap-2 bg-orange-500"

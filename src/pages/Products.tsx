@@ -262,7 +262,9 @@ const Products: React.FC = () => {
             onKeyPress={(e) => e.key === "Enter" && handleSearch()}
             placeholder="Search products..."
           />
-          <Button onClick={handleSearch} className="border">Search</Button>
+          <Button onClick={handleSearch} className="border">
+            Search
+          </Button>
           <Button variant="outline" onClick={fetchProducts}>
             <RefreshCw />
           </Button>

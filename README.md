@@ -48,3 +48,7 @@ http://localhost:5173
 - shadcn/ui
 - React Router
 - Lucide Icons
+
+## Deploy Vercel
+
+https://skilltest-frontend-amd-academy.vercel.app/
